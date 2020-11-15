@@ -1,0 +1,7 @@
+{
+  "name": "ionicPDF",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
