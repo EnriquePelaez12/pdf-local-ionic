@@ -1,20 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header >
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Ionic PDF
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content  class="ion-padding">
+  <form (ngSubmit)="createPdf()" [formGroup]="myForm">
+    <ion-item>
+      <ion-label>Incluir logo imagen?</ion-label>
+      <ion-checkbox formControlName="showLogo" slot="start"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">From</ion-label>
+      <ion-input formControlName="from"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">To</ion-label>
+      <ion-input formControlName="to"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">text</ion-label>
+      <ion-textarea formControlName="text" row="3"></ion-textarea>
+    </ion-item>
+    <ion-button expand="full" type="submit">Creat PDF</ion-button>
+  </form>
+
+  <img [src]="photoPreview" *ngIf="photoPreview">
+
+  <ion-button expand="full" (click)="takePicture()" >Add foto</ion-button>
+  <ion-button expand="full" (click)="downloadPDF()" color="secondary" [disabled]="!pdfObj">save PDF</ion-button>
+ 
 </ion-content>
+
